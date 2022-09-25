@@ -11,19 +11,19 @@
 @implementation CZAppDelegate
 
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey,id> *)launchOptions {
-//    [CZLKManager willExecuteTask:^(CZLKTask * _Nonnull task, NSDictionary * _Nonnull info) {
-//        NSLog(@"[CZLK] [Log] willExecuteTask %@ ", task.tid);
-//    }];
-//
-//    [CZLKManager didExecuteTask:^(CZLKTask * _Nonnull task, NSDictionary * _Nonnull info) {
-//        NSLog(@"[CZLK] [Log] didExecuteTask %@ ", task.tid);
-//    }];
-//
-//    [CZLKManager willReportTrace:^(NSMutableArray * _Nonnull events, NSMutableDictionary * _Nonnull otherData) {
-//        NSLog(@"[CZLK] [Log] willReportTrace \n events %@ \n otherData %@\n", events, otherData);
-//    }];
-//
-//    CZLK_INVOKE_WILL_FINISH_LAUNCH_START_TO_END();
+    [CZLKManager willExecuteTask:^(CZLKTask * _Nonnull task, NSDictionary * _Nonnull info) {
+        NSLog(@"[CZLK] [Log] willExecuteTask %@ ", task.tid);
+    }];
+
+    [CZLKManager didExecuteTask:^(CZLKTask * _Nonnull task, NSDictionary * _Nonnull info) {
+        NSLog(@"[CZLK] [Log] didExecuteTask %@ ", task.tid);
+    }];
+
+    [CZLKManager willReportTrace:^(NSMutableArray * _Nonnull events, NSMutableDictionary * _Nonnull otherData) {
+        NSLog(@"[CZLK] [Log] willReportTrace \n events %@ \n otherData %@\n", events, otherData);
+    }];
+
+    CZLK_INVOKE_WILL_FINISH_LAUNCH_START_TO_END();
     
     return YES;
 }
