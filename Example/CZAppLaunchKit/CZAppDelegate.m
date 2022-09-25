@@ -44,8 +44,12 @@
     return YES;
 }
 
--(void)applicationDidEnterBackground:(UIApplication *)application {
+- (void)applicationDidEnterBackground:(UIApplication *)application {
     CZLK_INVOKE_VIEW_DID_ENTER_BACKGROUND_RECORD();
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    CZLK_INVOKE_VIEW_WILL_ENTER_FOREGROUND_RECORD();
 }
 
 @end
