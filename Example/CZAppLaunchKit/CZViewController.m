@@ -26,6 +26,7 @@ CZLK_LIFE_CYCLE_ANCHORS()
 	// Do any additional setup after loading the view, typically from a nib.
 //    [self runtimeTask];
 //    [self nestRuntimeTask];
+    CZLK_INVOKE_VIEW_DID_LOAD_RECORD();
 }
 
 - (void)viewDidAppear:(BOOL)animated {
