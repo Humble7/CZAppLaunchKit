@@ -24,14 +24,14 @@ CZLK_LIFE_CYCLE_ANCHORS()
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-//    [self runtimeTask];
-//    [self nestRuntimeTask];
+    [self runtimeTask];
+    [self nestRuntimeTask];
     CZLK_INVOKE_VIEW_DID_LOAD_RECORD();
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-//    CZLK_INVOKE_VIEW_DID_APPEAR_RECORD();
+    CZLK_INVOKE_VIEW_DID_APPEAR_RECORD();
 }
 
 - (void)runtimeTask {

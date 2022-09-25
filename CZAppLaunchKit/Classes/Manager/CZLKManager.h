@@ -40,7 +40,7 @@ typedef void (^CZLKCustomExecuteBlock) (struct CZLKEntry entry, dispatch_block_t
 /// @param block parameters should be inout, not replace it.
 + (void)willReportTrace:(CZLKReportModifyBlock)block;
 
-/// Set a anchor task invoke report
+/// Set a anchor task to mark the time to report trace
 /// @param name anchor task name
 /// @param block json is a serial data of info
 + (void)setAnchorTask:(NSString *)name reportTrace:(CZLKReportInvokeBlock)block;

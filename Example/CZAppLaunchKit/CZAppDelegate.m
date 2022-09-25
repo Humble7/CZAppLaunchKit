@@ -31,7 +31,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    // TODO: why is here view did appear?
+    // 设置AnchorTask，当启动框架执行完AnchorTask后执行report trace的逻辑
     [CZLKManager setAnchorTask:CZLK_ANCHOR_TASK_VIEW_DID_APPEAR_RECORD reportTrace:^(NSString * _Nonnull report, NSProgress * _Nonnull progress, NSDictionary * _Nonnull info) {
         NSLog(@"[CZLK] [LOG] Report handler: \n %@", info);
     }];
