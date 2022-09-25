@@ -32,14 +32,14 @@
 {
     // Override point for customization after application launch.
     // TODO: why is here view did appear?
-//    [CZLKManager setAnchorTask:CZLK_ANCHOR_TASK_VIEW_DID_APPEAR_RECORD reportTrace:^(NSString * _Nonnull report, NSProgress * _Nonnull progress, NSDictionary * _Nonnull info) {
-//        NSLog(@"[CZLK] [LOG] Report handler: \n %@", info);
-//    }];
-//    
-//    [CZLKManager setFinalTask:CZLK_ANCHOR_TASK_VIEW_DID_APPEAR_RECORD finalProgress:^(NSArray * _Nonnull lefts, NSProgress * _Nonnull progress) {
-//        NSLog(@"[CZLK] [LOG] Finalize handler: \n %@ \n progress %@", lefts, progress);
-//    }];
-//    CZLK_INVOKE_DID_FINISH_LAUNCH_START_TO_END();
+    [CZLKManager setAnchorTask:CZLK_ANCHOR_TASK_VIEW_DID_APPEAR_RECORD reportTrace:^(NSString * _Nonnull report, NSProgress * _Nonnull progress, NSDictionary * _Nonnull info) {
+        NSLog(@"[CZLK] [LOG] Report handler: \n %@", info);
+    }];
+
+    [CZLKManager setFinalTask:CZLK_ANCHOR_TASK_VIEW_DID_APPEAR_RECORD finalProgress:^(NSArray * _Nonnull lefts, NSProgress * _Nonnull progress) {
+        NSLog(@"[CZLK] [LOG] Finalize handler: \n %@ \n progress %@", lefts, progress);
+    }];
+    CZLK_INVOKE_DID_FINISH_LAUNCH_START_TO_END();
     
     return YES;
 }
