@@ -7,11 +7,13 @@
 //
 
 @import UIKit;
+#import <CZAppLaunchKit/CZAppLaunchKit.h>
 #import "CZAppDelegate.h"
 
 int main(int argc, char * argv[])
 {
     @autoreleasepool {
+        CZLK_INVOKE_MAIN_FUNC_START_TO_END();
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([CZAppDelegate class]));
     }
 }

@@ -1,0 +1,16 @@
+PODS:
+  - CZAppLaunchKit (0.1.0)
+
+DEPENDENCIES:
+  - CZAppLaunchKit (from `../`)
+
+EXTERNAL SOURCES:
+  CZAppLaunchKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  CZAppLaunchKit: ec21b2ade81d542585d1aea683c2025a46351899
+
+PODFILE CHECKSUM: e68f98d9b22775306a1f99c5a30b83dd6b17059d
+
+COCOAPODS: 1.10.0

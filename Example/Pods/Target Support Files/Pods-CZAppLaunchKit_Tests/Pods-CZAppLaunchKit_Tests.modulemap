@@ -1,0 +1,6 @@
+framework module Pods_CZAppLaunchKit_Tests {
+  umbrella header "Pods-CZAppLaunchKit_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

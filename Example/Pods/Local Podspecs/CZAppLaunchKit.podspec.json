@@ -1,0 +1,22 @@
+{
+  "name": "CZAppLaunchKit",
+  "version": "0.1.0",
+  "summary": "A short description of CZAppLaunchKit.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Humble7/CZAppLaunchKit",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Humble7": "chenzhennba@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/Humble7/CZAppLaunchKit.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "CZAppLaunchKit/Classes/**/*"
+}
