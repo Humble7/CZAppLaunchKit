@@ -10,7 +10,7 @@
 
 #include <CZAppLaunchKit/CZLKDefine.h>
 /**
- * CZLK_RECORD_POINT_TASK: 用来锚定系统相关回调
+ * CZLK_RECORD_POINT_TASK: 用来锚定系统(或者主App定义的)相关回调
  * CZLK_PHASE_POINT_TASK: 细化系统之间的回调，划分为自定义的阶段
  
  * App Launch 阶段划分：
@@ -27,6 +27,7 @@
  * ----Before Render     : CZLK_PREDEFINED_TASK_BEFORE_RENDER_START
  * ViewDidLoad            : CZLK_PREDEFINED_TASK_VIEW_DID_LOAD_RECORD
  * ViewDidAppear         : CZLK_PREDEFINED_TASK_VIEW_DID_APPEAR_RECORD
+ * Home Page Render  : CZLK_PREDEFINED_TASK_HOME_PAGE_DID_RENDER_START
  *
  *
  * 非启动阶段-App Life Cycle 回调
@@ -122,6 +123,13 @@ CZLK_PHASE_POINT_TASK(CZLK_BEFORE_RENDER_START, "CZLK_UI_POST_END", "CZLK_BEFORE
 #define CZLK_PREDEFINED_TASK_BEFORE_RENDER_END() \
 CZLK_PHASE_POINT_TASK(CZLK_BEFORE_RENDER_END, "CZLK_BEFORE_RENDER_START", "CZLK_DID_FINISH_LAUNCH_END", "CZAppLaunchKit phase [Before Render] end")
 
+#pragma mark - Timeline(Main App): Home Page Render Phase
+#define CZLK_PREDEFINED_TASK_HOME_PAGE_DID_RENDER_START() \
+CZLK_RECORD_POINT_TASK(CZLK_HOME_PAGE_DID_RENDER_START, NULL, "CZLK_HOME_PAGE_DID_RENDER_END", "CZAppLaunchKit phase [Home Page Render] start")
+
+#define CZLK_PREDEFINED_TASK_HOME_PAGE_DID_RENDER_END() \
+CZLK_RECORD_POINT_TASK(CZLK_HOME_PAGE_DID_RENDER_END, "CZLK_HOME_PAGE_DID_RENDER_START", NULL, "CZAppLaunchKit phase [Home Page Render] end")
+
 #pragma mark - Timeline(System): viewDidLoad
 #define CZLK_PREDEFINED_TASK_VIEW_DID_LOAD_RECORD() \
 CZLK_RECORD_POINT_TASK(CZLK_VIEW_DID_LOAD_RECORD, NULL, NULL, "CZAppLaunchKit phase [viewDidLoad] record")
@@ -142,7 +150,7 @@ CZLK_RECORD_POINT_TASK(CZLK_WILL_ENTER_FOREGROUND_RECORD, NULL, NULL, "CZAppLaun
 
 #define CZLK_ANCHOR_TASK_VIEW_DID_APPEAR_RECORD @"CZLK_VIEW_DID_APPEAR_RECORD"
 
-// 各阶段设置锚点空方法调用：
+// Enable CZAppLaunchKit-各阶段设置锚点空方法调用：
 // 在App Launch 阶段之间自定义启动阶段，同时在各阶段设置锚点（调用空方法），以便业务方将启动任务插入到各个定义的阶段中
 #pragma mark - Invoke
 #define CZLK_LIFE_CYCLE_ANCHORS() \
