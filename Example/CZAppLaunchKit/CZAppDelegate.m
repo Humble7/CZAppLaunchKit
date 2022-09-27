@@ -40,7 +40,7 @@
 //        NSLog(@"[CZLK] [LOG] Finalize handler: \n %@ \n progress %@", lefts, progress);
 //    }];
     CZLK_INVOKE_DID_FINISH_LAUNCH_START_TO_END();
-    
+    [self registerHomePageDidFinishRenderCallback];
     return YES;
 }
 
@@ -50,6 +50,33 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     CZLK_INVOKE_VIEW_WILL_ENTER_FOREGROUND_RECORD();
+}
+
+// https://juejin.cn/post/6921508850684133390
+// 无侵入监控首屏渲染完成的时机
+- (void)registerHomePageDidFinishRenderCallback {
+    if (@available(iOS 13.0, *)) {
+        //注册kCFRunLoopBeforeTimers回调
+        CFRunLoopRef mainRunloop = [[NSRunLoop mainRunLoop] getCFRunLoop];
+        CFRunLoopActivity activities = kCFRunLoopAllActivities;
+        CFRunLoopObserverRef observer = CFRunLoopObserverCreateWithHandler(kCFAllocatorDefault, activities, YES, 0, ^(CFRunLoopObserverRef observer, CFRunLoopActivity activity) {
+            if (activity == kCFRunLoopBeforeTimers) {
+                CZLK_INVOKE_HOME_PAGE_DID_RENDER_START_TO_END();
+                NSTimeInterval stamp = [[NSDate date] timeIntervalSince1970];
+                NSLog(@"runloop beforetimers launch end:%f",stamp);
+                CFRunLoopRemoveObserver(mainRunloop, observer, kCFRunLoopCommonModes);
+            }
+        });
+        CFRunLoopAddObserver(mainRunloop, observer, kCFRunLoopCommonModes);
+    } else {
+        //注册block
+        CFRunLoopRef mainRunloop = [[NSRunLoop mainRunLoop] getCFRunLoop];
+        CFRunLoopPerformBlock(mainRunloop,NSDefaultRunLoopMode,^(){
+            CZLK_INVOKE_HOME_PAGE_DID_RENDER_START_TO_END();
+            NSTimeInterval stamp = [[NSDate date] timeIntervalSince1970];
+            NSLog(@"runloop block launch end:%f",stamp);
+        });
+    }
 }
 
 @end
